@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import request from 'superagent';
-import { Link } from 'react-router-dom';
+import GhouleryWrapper from './GhouleryWrapper.js';
+import './Ghoulery.css';
 
 export default class Ghoulery extends Component {
   state = {
@@ -8,10 +9,10 @@ export default class Ghoulery extends Component {
   }
 
   fetchGhosts = async () => {
-    const data = await request.get(`https://personal-ghosts.herokuapp.com/ghosts`);
+    const data = await request.get(`https://pacific-dusk-53456.herokuapp.com/ghosts`);
 
     this.setState({
-      ghosts: data.body.results,
+      ghosts: data.body,
     })
   }
 
@@ -21,20 +22,10 @@ export default class Ghoulery extends Component {
 
   render() {
 
-    const ghosts = this.state.ghosts;
-
-    const ghostWrapper = ghosts.map(
-      ghost => 
-      {return <Link to={ghost.id}>
-          <img alt={ghost.name} src={ghost.img} />
-          </Link>
-        }
-      
-    )
-
     return (
-      <div>
-        {ghostWrapper}
+      <div className="main">
+        <GhouleryWrapper 
+        ghosts={this.state.ghosts} />
       </div>
     )
   }
