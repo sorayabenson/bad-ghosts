@@ -8,7 +8,7 @@ export default class Ghost extends Component {
       }
 
     componentDidMount = async () => {
-        const data = await request.get(https://personal-ghosts.herokuapp.com/ghosts/${this.props.match.params.id}`);
+        const data = await request.get(`https://personal-ghosts.herokuapp.com/ghosts/${this.props.match.params.id}`);
 
         this.setState({
             ghost: data.body,
