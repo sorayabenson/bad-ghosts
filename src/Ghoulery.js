@@ -9,7 +9,7 @@ export default class Ghoulery extends Component {
   }
 
   fetchGhosts = async () => {
-    const data = await request.get(`https://pacific-dusk-53456.herokuapp.com/ghosts`);
+    const data = await request.get(`https://personal-ghosts.herokuapp.com/ghosts`);
 
     this.setState({
       ghosts: data.body,
